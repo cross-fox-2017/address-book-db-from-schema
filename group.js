@@ -1,5 +1,11 @@
 "use strict"
 
+const repl = require('repl');
+const sqlite = require('sqlite3').verbose();
+
+var file = 'addressbook.db';
+var db = new sqlite.Database(file);
+
 class Groups{
   static addGroup (nama) {
     var ADD_GROUP = "INSERT INTO groups (nama) VALUES ($nama);";
@@ -16,7 +22,7 @@ class Groups{
     })
   }
   static updateGroup(id, nama) {
-    var UPDATE_GROUP = "UPDATE groups SET nama = $nama WHERE id = $id;";
+    var UPDATE_GROUP = "UPDATE groups SET nama = $nama WHERE id_group = $id;";
     db.serialize(function() {
       db.run(UPDATE_GROUP,{
         $nama: nama,
@@ -30,7 +36,7 @@ class Groups{
     })
   }
   static deleteGroup (id) {
-    var DELETE_GROUP = "DELETE FROM groups WHERE id = $id;"
+    var DELETE_GROUP = "DELETE FROM groups WHERE id_group = $id;"
     db.serialize(function() {
       db.run(DELETE_GROUP,{
         $id: id
@@ -56,3 +62,9 @@ class Groups{
     })
   }
 }
+
+var repled = repl.start('>  ').context
+repled.addGroup = Groups.addGroup
+repled.updateGroup = Groups.updateGroup
+repled.deleteGroup = Groups.deleteGroup
+repled.readGroup = Groups.readGroup

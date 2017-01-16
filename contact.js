@@ -1,5 +1,11 @@
 "use strict"
 
+const repl = require('repl');
+const sqlite = require('sqlite3').verbose();
+
+var file = 'addressbook.db';
+var db = new sqlite.Database(file);
+
 class Contacts{
   static addContact (fullname, phone, email) {
     var ADD_CONTACT = "INSERT INTO contacts (fullname, phone, email) VALUES ($fullname, $phone, $email);";
@@ -17,15 +23,13 @@ class Contacts{
       })
     })
   }
-  static updateContact(id, fullname, phone, email) {
-    var UPDATE_CONTACT = "UPDATE contacts SET fullname = $fullname, phone = $phone, email = $email WHERE id = $id;";
+  static insertContactIdToGroupId(contactid, groupid){
+
+  }
+  static updateContact(id, col, value) {
+    var UPDATE_CONTACT = db.prepare(`UPDATE contacts SET '${col}' = ? WHERE id_contact = ?`);
     db.serialize(function() {
-      db.run(UPDATE_CONTACT,{
-        $fullname: fullname,
-        $phone: phone,
-        $id: id,
-        $email: email
-      }, function(err){
+      UPDATE_CONTACT.run(value, id, function(err){
         if (err){
           console.log(err);
         } else {
@@ -35,7 +39,7 @@ class Contacts{
     })
   }
   static deleteContact (id) {
-    var DELETE_CONTACT = "DELETE FROM contacts WHERE id = $id;"
+    var DELETE_CONTACT = "DELETE FROM contacts WHERE id_contact = $id;"
     db.serialize(function() {
       db.run(DELETE_CONTACT,{
         $id: id
@@ -61,3 +65,10 @@ class Contacts{
     })
   }
 }
+
+
+var repled = repl.start('>  ').context
+repled.addContact = Contacts.addContact
+repled.updateContact = Contacts.updateContact
+repled.deleteContact = Contacts.deleteContact
+repled.readContact = Contacts.readContact
