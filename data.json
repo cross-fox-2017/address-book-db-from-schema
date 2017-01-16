@@ -1,0 +1,31 @@
+{
+    "contact": [{
+            "name": "Ida Bagus Chahya Dhegana",
+            "company": "PT.CSC UTAMA",
+            "phone": "08129042724",
+            "email": "dhegana@gmail.com"
+        },
+        {
+            "name": "Rubi Henjaya",
+            "company": "PT.Hacktiv8",
+            "phone": "081238187401",
+            "email": "rubi@gmail.com"
+        }
+    ],
+    "groups": [{
+            "name": "Student"
+        },
+        {
+            "name": "Instructor"
+        }
+    ],
+    "contact_groups": [{
+            "group_id": 1,
+            "contact_id": 1
+        },
+        {
+            "group_id": 2,
+            "contact_id": 2
+        }
+    ]
+}
