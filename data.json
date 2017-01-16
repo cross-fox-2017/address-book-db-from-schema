@@ -1,0 +1,39 @@
+{
+    "contacts": [{
+        "firstname": "Eri",
+        "lastname": "Irawan",
+        "namaperusahaan": "PT. A",
+        "notlp": "085980070011",
+        "email": "hacktiv8&@mail.com",
+        "create_at": "16-01-2016"
+    }, {
+        "firstname": "Dabol",
+        "lastname": "bikin",
+        "namaperusahaan": "PT.B",
+        "notlp": "085980070012",
+        "email": "hacktiv8&@mail.com",
+        "create_at": "16-02-2016"
+    }, {
+        "firstname": "Dabol",
+        "lastname": "bikin",
+        "namaperusahaan": "PT.C",
+        "notlp": "085980070013",
+        "email": "hacktiv8&@mail.com",
+        "create_at": "16-02-2016"
+    }],
+
+    "groups": [{
+        "groupname": "student",
+        "create_at": "16-01-2016"
+    }, {
+        "groupname": "instructor",
+        "create_at": "17-03-2016"
+    }],
+    "group_details": [{
+        "contact_id": "001",
+        "group_id": "001"
+    }, {
+        "contact_id": "002",
+        "group_id": "002"
+    }]
+}
