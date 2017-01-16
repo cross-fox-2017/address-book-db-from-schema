@@ -1,0 +1,49 @@
+{
+  "Contacts": [{
+    "firstname": "Rubi",
+    "lastname": "Henjaya",
+    "company": "hacktiv8",
+    "phone": "0811321654987",
+    "email": "rubi.henjaya@hacktiv8.com"
+  },
+
+  {
+    "firstname": "Riza",
+    "lastname": "Fahmi",
+    "company": "hacktiv8",
+    "phone": "0811123456789",
+    "email": "riza.fahmi@hacktiv8.com"
+  },
+
+  {
+    "firstname": "Fadly",
+    "lastname": "Kayo",
+    "company": "hacktiv8",
+    "phone": "081806070868",
+    "email": "fadly.kayo@hacktiv8.com"
+  }],
+
+
+  "Groups": [{
+    "name": "hacktiv8"
+  },
+
+  {
+    "name": "instructor"
+  }],
+
+  "Contact_Groups": [{
+    "group_id": 1,
+    "contact_id": 1
+  },
+
+  {
+    "group_id": 1,
+    "contact_id": 2
+  },
+
+  {
+    "group_id": 2,
+    "contact_id": 3
+  }]
+}
