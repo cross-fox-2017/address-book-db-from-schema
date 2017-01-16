@@ -48,7 +48,7 @@ class Contacts {
   }
 
   static showData () {
-    let SHOW_DATA = `SELECT * FROM contacts`;
+    let SHOW_DATA = `select contacts.*,groups.* from contacts left join groups on contacts.id=groups.id`;
     db.serialize(function() {
       db.each(SHOW_DATA, function(err,row) {
         if(err) {
@@ -98,11 +98,13 @@ class Contacts {
 }
 
 
-const start = repl.start('> ')
-start.context.addData = Contacts.addData
-start.context.editData = Contacts.editData
-start.context.deleteData = Contacts.deleteData
-start.context.showData = Contacts.showData
-start.context.showName = Contacts.showName
-start.context.search = Contacts.search
-start.context.help = Contacts.help
+// const start = repl.start('> ')
+// start.context.addData = Contacts.addData
+// start.context.editData = Contacts.editData
+// start.context.deleteData = Contacts.deleteData
+// start.context.showData = Contacts.showData
+// start.context.showName = Contacts.showName
+// start.context.search = Contacts.search
+// start.context.help = Contacts.help
+
+module.exports = Contacts;

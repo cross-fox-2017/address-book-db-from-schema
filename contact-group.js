@@ -98,11 +98,13 @@ class Group_Contacts {
 }
 
 
-const start = repl.start('> ')
-start.context.addData = Group_Contacts.addData
-start.context.editData = Group_Contacts.editData
-start.context.deleteData = Group_Contacts.deleteData
-start.context.showData = Group_Contacts.showData
-start.context.showName = Group_Contacts.showName
-start.context.search = Group_Contacts.search
-start.context.help = Group_Contacts.help
+// const start = repl.start('> ')
+// start.context.addData = Group_Contacts.addData
+// start.context.editData = Group_Contacts.editData
+// start.context.deleteData = Group_Contacts.deleteData
+// start.context.showData = Group_Contacts.showData
+// start.context.showName = Group_Contacts.showName
+// start.context.search = Group_Contacts.search
+// start.context.help = Group_Contacts.help
+
+module.exports = Group_Contacts;

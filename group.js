@@ -98,11 +98,13 @@ class Groups {
 }
 
 
-const start = repl.start('> ')
-start.context.addData = Groups.addData
-start.context.editData = Groups.editData
-start.context.deleteData = Groups.deleteData
-start.context.showData = Groups.showData
-start.context.showName = Groups.showName
-start.context.search = Groups.search
-start.context.help = Groups.help
+// const start = repl.start('> ')
+// start.context.addData = Groups.addData
+// start.context.editData = Groups.editData
+// start.context.deleteData = Groups.deleteData
+// start.context.showData = Groups.showData
+// start.context.showName = Groups.showName
+// start.context.search = Groups.search
+// start.context.help = Groups.help
+
+module.exports = Groups;
