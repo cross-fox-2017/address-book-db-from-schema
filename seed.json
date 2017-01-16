@@ -1,0 +1,5 @@
+{
+  "contacts": [{"id_contact":1,"fullname":"Syanmil Izhharuddin","phone":"7659876","email":"syanmil@yahoo.com"},{"id_contact":2,"fullname":"Yoni Setiawan","phone":"532439","email":"yonimaster@yahoo.com"}],
+  "groups": [{"id_group":1,"nama":"cross-fox-2017"},{"id_group":2,"nama":"blandford-fox-2017"}],
+  "groups_contacts": [{"id_contact_group":1,"id_contact":1,"id_group":1},{"id_contact_group":2,"id_contact":2,"id_group":1}]
+}
