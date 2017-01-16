@@ -1,0 +1,58 @@
+"use strict"
+
+class Groups{
+  static addGroup (nama) {
+    var ADD_GROUP = "INSERT INTO groups (nama) VALUES ($nama);";
+    db.serialize(function() {
+      db.run(ADD_GROUP, {
+        $nama: nama
+      }, function(err){
+        if (err){
+          console.log(err);
+        } else {
+          console.log('Group Added');
+        }
+      })
+    })
+  }
+  static updateGroup(id, nama) {
+    var UPDATE_GROUP = "UPDATE groups SET nama = $nama WHERE id = $id;";
+    db.serialize(function() {
+      db.run(UPDATE_GROUP,{
+        $nama: nama,
+      }, function(err){
+        if (err){
+          console.log(err);
+        } else {
+          console.log(`Group id ${id} Updated`);
+        }
+      })
+    })
+  }
+  static deleteGroup (id) {
+    var DELETE_GROUP = "DELETE FROM groups WHERE id = $id;"
+    db.serialize(function() {
+      db.run(DELETE_GROUP,{
+        $id: id
+      }, function(err){
+        if (err){
+          console.log(err);
+        } else {
+          console.log(`Group id ${id} Deleted`);
+        }
+      })
+    })
+  }
+  static readGroup() {
+    var READ_GROUP = "SELECT * FROM groups"
+    db.serialize(function() {
+      db.all(READ_GROUP,function(err,rows){
+        if (err){
+          console.log(err);
+        } else {
+          console.log(rows);
+        }
+      })
+    })
+  }
+}
