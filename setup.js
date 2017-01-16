@@ -23,6 +23,8 @@ for (var i = 0; i < data.Contacts.length; i++) {
   }
 }
 
+console.log(SEED_DATA_CONTACTS)
+
 for (var i = 0; i < data.Groups.length; i++) {
   if (i < data.Groups.length - 1) {
     SEED_DATA_GROUPS += `('${data.Groups[i].name}'),`
