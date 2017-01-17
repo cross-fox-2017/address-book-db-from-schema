@@ -64,6 +64,18 @@ class Contacts{
       })
     })
   }
+  static showContacts(){
+    var SHOW_CONTACTS = "SELECT contacts.*, groups.nama AS nama_group FROM contacts LEFT JOIN contacts_groups ON contacts.id_contact = contacts_groups.id_contact LEFT JOIN groups ON contacts_groups.id_group = groups.id_group"
+    db.serialize(function() {
+      db.all(SHOW_CONTACTS,function(err,rows){
+        if (err){
+          console.log(err);
+        } else {
+          console.log(rows);
+        }
+      })
+    })
+  }
 }
 
 
@@ -72,3 +84,4 @@ repled.addContact = Contacts.addContact
 repled.updateContact = Contacts.updateContact
 repled.deleteContact = Contacts.deleteContact
 repled.readContact = Contacts.readContact
+repled.showContacts = Contacts.showContacts

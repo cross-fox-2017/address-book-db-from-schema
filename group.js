@@ -49,10 +49,10 @@ class Groups{
       })
     })
   }
-  static readGroup() {
-    var READ_GROUP = "SELECT * FROM groups"
+  static ShowGroups() {
+    var SHOW_GROUPS = "SELECT * FROM groups"
     db.serialize(function() {
-      db.all(READ_GROUP,function(err,rows){
+      db.all(SHOW_GROUPS,function(err,rows){
         if (err){
           console.log(err);
         } else {
