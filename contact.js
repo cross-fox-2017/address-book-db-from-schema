@@ -5,6 +5,8 @@ const sqlite3 = require('sqlite3').verbose();
 
 let file = "address_book.db"
 let db = new sqlite3.Database(file);
+let emailPatt = /\S+@\S+\.\S+/
+let phonePatt = /[0-9]{0,13}/
 
 class Contact {
   static insertContact (name, company, phone, email) {
@@ -60,7 +62,9 @@ class Contact {
   }
 
   static showContact () {
-    let SELECT_CONTACT = `SELECT contact.*, groups.name, (SELECT group_id FROM groups WHERE groups.id = contact_groups.id )`
+    let SELECT_CONTACT = `SELECT contact.*, groups.name FROM contact
+                          LEFT JOIN contact_groups ON contact.id = contact_groups.contact_id
+                          LEFT JOIN groups ON contact_groups.group_id = groups.id`
     db.serialize(function() {
       db.each(SELECT_CONTACT, function(err, row) {
         if(err) {
