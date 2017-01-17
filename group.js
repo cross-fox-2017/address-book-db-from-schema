@@ -44,6 +44,15 @@ class Groups {
               }
           })
       })
+      db.serialize(function() {
+          db.run(`DELETE from contacts_groups where groups_id='${id}'`, function(err) {
+              if (err) {
+                  console.log(err);
+              } else {
+                  console.log("DELETE_DATA SUCCESS");
+              }
+          })
+      })
     return true;
     }
 
