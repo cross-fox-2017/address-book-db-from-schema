@@ -6,20 +6,26 @@ const sqlite3 = require('sqlite3').verbose();
 let file = "address_book.db"
 let db = new sqlite3.Database(file);
 let emailPatt = /\S+@\S+\.\S+/
-let phonePatt = /[0-9]{0,13}/
+let phonePatt = /[0-9]{9,13}/
 
 class Contact {
   static insertContact (name, company, phone, email) {
-    let INSERT_DATA = `INSERT INTO contact(name, company, phone, email) VALUES('${name}', '${company}', '${phone}', '${email}')`
-    db.serialize(function() {
-      db.run(INSERT_DATA, function(err) {
-        if(err) {
-          console.log(err)
-        } else {
-          console.log("Insert Data to Contact Success!")
-        }
+    if(!emailPatt.test(email)){
+      return console.log("Email not valid!")
+    } else if(!phonePatt.test(phone)){
+      return console.log("Phone number not valid!")
+    } else {
+      let INSERT_DATA = `INSERT INTO contact(name, company, phone, email) VALUES('${name}', '${company}', '${phone}', '${email}')`
+      db.serialize(function() {
+        db.run(INSERT_DATA, function(err) {
+          if(err) {
+            console.log(err)
+          } else {
+            console.log("Insert Data to Contact Success!")
+          }
+        })
       })
-    })
+    }
   }
 
   static insertContactIdToGroupId (contactid, groupid) {
@@ -62,7 +68,7 @@ class Contact {
   }
 
   static showContact () {
-    let SELECT_CONTACT = `SELECT contact.*, groups.name FROM contact
+    let SELECT_CONTACT = `SELECT contact.*, groups.name AS GroupName FROM contact
                           LEFT JOIN contact_groups ON contact.id = contact_groups.contact_id
                           LEFT JOIN groups ON contact_groups.group_id = groups.id`
     db.serialize(function() {

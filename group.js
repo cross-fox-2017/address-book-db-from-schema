@@ -1,4 +1,4 @@
-``"use strict"
+"use strict"
 
 const repl = require('repl');
 const sqlite3 = require('sqlite3').verbose();
