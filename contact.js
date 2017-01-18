@@ -6,7 +6,7 @@ const sqlite = require('sqlite3').verbose();
 var file = 'addressbook.db';
 var db = new sqlite.Database(file);
 
-class Contacts{
+export class Contacts{
   static addContact (fullname, phone, email) {
     let validEmail = /\w+@\w+.\w+/.test(email)
     if (phone.length > 13){
@@ -25,7 +25,7 @@ class Contacts{
         if (err){
           console.log(err);
         } else {
-          console.log(`Contact ${fullname} Has Been Added`);
+          console.log(`Contact "${fullname}" Has Been Added`);
         }
       })
     })
@@ -95,10 +95,10 @@ class Contacts{
 }
 
 
-var repled = repl.start('>  ').context
-repled.addContact = Contacts.addContact
-repled.updateContact = Contacts.updateContact
-repled.deleteContact = Contacts.deleteContact
-repled.readContact = Contacts.readContact
-repled.showContacts = Contacts.showContacts
-repled.contactIntoGroup = Contacts.insertContactIdToGroupId
+// var repled = repl.start('>  ').context
+// repled.addContact = Contacts.addContact
+// repled.updateContact = Contacts.updateContact
+// repled.deleteContact = Contacts.deleteContact
+// repled.readContact = Contacts.readContact
+// repled.showContacts = Contacts.showContacts
+// repled.contactIntoGroup = Contacts.insertContactIdToGroupId

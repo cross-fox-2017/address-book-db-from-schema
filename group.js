@@ -6,7 +6,7 @@ const sqlite = require('sqlite3').verbose();
 var file = 'addressbook.db';
 var db = new sqlite.Database(file);
 
-class Groups{
+export class Groups{
   static addGroup (nama) {
     var ADD_GROUP = "INSERT INTO groups (nama) VALUES ($nama);";
     db.serialize(function() {
@@ -37,6 +37,7 @@ class Groups{
   }
   static deleteGroup (id) {
     var DELETE_GROUP = "DELETE FROM groups WHERE id_group = $id;"
+    var DELETE_GROUP_PLUS = "DELETE FROM contacts_groups WHERE id_group = $id;"
     db.serialize(function() {
       db.run(DELETE_GROUP,{
         $id: id
@@ -47,10 +48,18 @@ class Groups{
           console.log(`Group id ${id} Deleted`);
         }
       })
-      db.run(nulling data group from contact)
+      db.run(DELETE_GROUP_PLUS,{
+        $id: id
+      }, function(err){
+        if (err){
+          console.log(err);
+        } else {
+          console.log(`contacts Removed from this group`);
+        }
+      })
     })
   }
-  static ShowGroups() {
+  static showGroups() {
     var SHOW_GROUPS = "SELECT * FROM groups"
     db.serialize(function() {
       db.all(SHOW_GROUPS,function(err,rows){
@@ -64,8 +73,8 @@ class Groups{
   }
 }
 
-var repled = repl.start('>  ').context
-repled.addGroup = Groups.addGroup
-repled.updateGroup = Groups.updateGroup
-repled.deleteGroup = Groups.deleteGroup
-repled.readGroup = Groups.readGroup
+// var repled = repl.start('>  ').context
+// repled.addGroup = Groups.addGroup
+// repled.updateGroup = Groups.updateGroup
+// repled.deleteGroup = Groups.deleteGroup
+// repled.ShowGroups = Groups.ShowGroups
