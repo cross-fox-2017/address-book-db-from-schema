@@ -47,6 +47,7 @@ class Groups{
           console.log(`Group id ${id} Deleted`);
         }
       })
+      db.run(nulling data group from contact)
     })
   }
   static ShowGroups() {

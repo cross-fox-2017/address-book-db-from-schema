@@ -8,6 +8,13 @@ var db = new sqlite.Database(file);
 
 class Contacts{
   static addContact (fullname, phone, email) {
+    let validEmail = /\w+@\w+.\w+/.test(email)
+    if (phone.length > 13){
+      return "Wrong Phone input format"
+    }
+    if (!validEmail){
+      return "Email not valid"
+    }
     var ADD_CONTACT = "INSERT INTO contacts (fullname, phone, email) VALUES ($fullname, $phone, $email);";
     db.serialize(function() {
       db.run(ADD_CONTACT, {
@@ -18,13 +25,22 @@ class Contacts{
         if (err){
           console.log(err);
         } else {
-          console.log('Contact Added');
+          console.log(`Contact ${fullname} Has Been Added`);
         }
       })
     })
   }
-  static insertContactIdToGroupId(contactid, groupid){
-
+  static insertContactIdToGroupId(id_contact, id_group){
+    var CONNECT = "INSERT INTO contacts_groups (id_contact, id_group) VALUES (?, ?);";
+    db.serialize(function() {
+      db.run(CONNECT, id_contact, id_group, function(err){
+        if (err){
+          console.log(err);
+        } else {
+          console.log('Contact Added Into Group');
+        }
+      })
+    })
   }
   static updateContact(id, col, value) {
     var UPDATE_CONTACT = db.prepare(`UPDATE contacts SET '${col}' = ? WHERE id_contact = ?`);
@@ -85,3 +101,4 @@ repled.updateContact = Contacts.updateContact
 repled.deleteContact = Contacts.deleteContact
 repled.readContact = Contacts.readContact
 repled.showContacts = Contacts.showContacts
+repled.contactIntoGroup = Contacts.insertContactIdToGroupId
