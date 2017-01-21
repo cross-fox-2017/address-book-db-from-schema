@@ -7,7 +7,7 @@ let file = "address_book.db"
 let db = new sqlite3.Database(file);
 
 class ContactGroups {
-  static insertGroup (contact_id, group_id) {
+  static insertGroup (group_id, contact_id) {
     let INSERT_GROUP = `INSERT INTO contact_groups(group_id, contact_id) VALUES('${group_id}', '${contact_id}')`
     db.serialize(function() {
       db.run(INSERT_GROUP, function(err) {
@@ -20,7 +20,7 @@ class ContactGroups {
     })
   }
 
-  static updateGroup (contact_id, group_id, id) {
+  static updateGroup (group_id, contact_id, id) {
     let UPDATE_GROUP = `UPDATE contact_groups SET group_id = '${group_id}', contact_id = '${contact_id}' WHERE id = ${id}`
     db.serialize(function() {
       db.run(UPDATE_GROUP, function(err) {
@@ -66,18 +66,3 @@ command.context.insertGroup = ContactGroups.insertGroup;
 command.context.updateGroup = ContactGroups.updateGroup;
 command.context.deleteGroup = ContactGroups.deleteGroup;
 command.context.showGroup = ContactGroups.showGroup;
-
-
-/* Driver Code
-  insertGroup(name)
-  updateGroup(name, id)
-  deleteGroup(id)
-  showGroup()
-*/
-
-/*
-  insertGroup("Arctic Fox")
-  updateGroup("Arctic Fox", 3)
-  deleteGroup(3)
-  showGroup()
-*
