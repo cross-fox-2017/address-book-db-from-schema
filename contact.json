@@ -1,0 +1,4 @@
+{"contacts":[{"id":1,"name":"timog","email":"timogio99@gmail.com","phone": "+6281276861447"},{"id":2,"name":"timoge","email":"timogeo99@gmail.com","phone": "+6281376861447"}],
+"groups" :[{"id": 1,"name":"cross-fox-2017","created_at":"2017-01-02"},{"id": 2,"name":"cross-fix-2016","created_at":"2016-01-02"}],
+"contact_group":[{"id": 1,"contact_id":1,"group_id":1,"join_at":"2017-01-03"},{"id": 2,"contact_id":2,"group_id":2,"join_at":"2016-01-03"}]
+}
