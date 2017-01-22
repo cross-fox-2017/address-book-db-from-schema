@@ -8,17 +8,28 @@ let db = new sqlite3.Database(file);
 // write your code here
 class Contacts {
   static insertContact (firstname, lastname, company, phone, email) {
-    let add = `INSERT INTO contacts (firstname, lastname, company, phone, email) VALUES ('${firstname}', '${lastname}', '${company}', '${phone}', '${email}');`;
-    db.serialize(function () {
-      db.run(add, function (err) {
-        if (err) {
-          console.log(err);
-        }
-        else {
-          console.log(add);
-        }
+    let regexPhone = /^\d{10,13}$/;
+    let regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (regexPhone.test(phone) === false) {
+      console.log("Incorrect phone. Please input numbers between 10-13 length.");
+    }
+    else if (regexEmail.test(email) === false) {
+      console.log("Incorrect email.");
+    }
+    else {
+      let add = `INSERT INTO contacts (firstname, lastname, company, phone, email)
+      VALUES ('${firstname}', '${lastname}', '${company}', '${phone}', '${email}');`;
+      db.serialize(function () {
+        db.run(add, function (err) {
+          if (err) {
+            console.log(err);
+          }
+          else {
+            console.log(add);
+          }
+        });
       });
-    });
+    }
   }
 
   static updateContact (id, attribute, value) {
@@ -63,6 +74,20 @@ class Contacts {
     });
   }
 
+  static show () {
+    let show = `SELECT * FROM contacts`;
+    db.serialize(function () {
+      db.each(show, function (err, row) {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          console.log(row);
+        }
+      });
+    });
+  }
+
   static help () {
     let show = `insertContact (firstname, lastname, company, phone, email)\nupdateContact (id, attribute, value)\ndeleteContact (id)\nshowContact ()\nhelp ()`;
     console.log(show);
@@ -74,4 +99,5 @@ replCommand.context.insertContact = Contacts.insertContact;
 replCommand.context.updateContact = Contacts.updateContact;
 replCommand.context.deleteContact = Contacts.deleteContact;
 replCommand.context.showContact = Contacts.showContact;
+replCommand.context.show = Contacts.show;
 replCommand.context.help = Contacts.help;

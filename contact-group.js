@@ -8,7 +8,7 @@ let db = new sqlite3.Database(file);
 // write your code here
 class Contact_Groups {
   static insertContactIdToGroup (contactid, groupid) {
-    let add = `INSERT INTO contact_groups (contact_id, group_id) VALUES ('${contactid}', '${contactid}');`;
+    let add = `INSERT INTO contact_groups (contact_id, group_id) VALUES ('${contactid}', '${groupid}');`;
     db.serialize(function () {
       db.run(add, function (err) {
         if (err) {
@@ -42,8 +42,6 @@ class Contact_Groups {
 }
 
 let replCommand = repl.start("> ");
-replCommand.context.addGroup = Groups.addGroup;
-replCommand.context.updateGroup = Groups.updateGroup;
-replCommand.context.deleteGroup = Groups.deleteGroup;
-replCommand.context.showGroup = Groups.showGroup;
-replCommand.context.help = Groups.help;
+replCommand.context.insertContactIdToGroup = Contact_Groups.insertContactIdToGroup;
+replCommand.context.showContactGroup = Contact_Groups.showContactGroup;
+replCommand.context.help = Contact_Groups.help;
