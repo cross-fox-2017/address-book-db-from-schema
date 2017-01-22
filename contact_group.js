@@ -5,35 +5,35 @@ const sqlite3 = require('sqlite3').verbose();
 let file = "address_book.db"
 let db = new sqlite3.Database(file);
 
-export class Groups {
-  static insertGroup (name) {
-    let INSERT_GROUP = `INSERT INTO groups(name) VALUES('${name}')`
+export class ContactGroups {
+  static insertContactGroup (group_id, contact_id) {
+    let INSERT_GROUP = `INSERT INTO contact_groups(group_id, contact_id) VALUES('${group_id}', '${contact_id}')`
     db.serialize(function() {
       db.run(INSERT_GROUP, function(err) {
         if(err) {
           console.log(err)
         } else {
-          console.log("Insert Data to Groups Success!")
+          console.log("Insert Data to Group_ID Success!")
         }
       })
     })
   }
 
-  static updateGroup (name, id) {
-    let UPDATE_GROUP = `UPDATE groups SET name = '${name}' WHERE id = ${id}`
+  static updateContactGroup (group_id, contact_id, id) {
+    let UPDATE_GROUP = `UPDATE contact_groups SET group_id = '${group_id}', contact_id = '${contact_id}' WHERE id = ${id}`
     db.serialize(function() {
       db.run(UPDATE_GROUP, function(err) {
         if(err) {
           console.log(err)
         } else {
-          console.log("Update Data Group Success!");
+          console.log("Update Group_ID Success!");
         }
       })
     })
   }
 
-  static deleteGroup (id) {
-    let DELETE_GROUP = `DELETE FROM groups WHERE id = ${id}`
+  static deleteContactGroup (id) {
+    let DELETE_GROUP = `DELETE FROM contact_groups WHERE id = ${id}`
     db.serialize(function() {
       db.run(DELETE_GROUP, function(err, row) {
         if(err) {
@@ -45,8 +45,8 @@ export class Groups {
     })
   }
 
-  static showGroup () {
-    let SELECT_GROUP = `SELECT * FROM groups`
+  static showContactGroup () {
+    let SELECT_GROUP = `SELECT * FROM contact_groups`
     db.serialize(function() {
       db.each(SELECT_GROUP, function(err, row) {
         if(err) {
@@ -58,4 +58,6 @@ export class Groups {
     })
   }
 }
+
+
 
