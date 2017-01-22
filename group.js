@@ -1,12 +1,11 @@
 "use strict"
 
-const repl = require('repl');
 const sqlite3 = require('sqlite3').verbose();
 
 let file = "address_book.db"
 let db = new sqlite3.Database(file);
 
-class Group {
+export class Groups {
   static insertGroup (name) {
     let INSERT_GROUP = `INSERT INTO groups(name) VALUES('${name}')`
     db.serialize(function() {
@@ -60,24 +59,3 @@ class Group {
   }
 }
 
-let command = repl.start("> ")
-
-command.context.insertGroup = Group.insertGroup;
-command.context.updateGroup = Group.updateGroup;
-command.context.deleteGroup = Group.deleteGroup;
-command.context.showGroup = Group.showGroup;
-
-
-/* Driver Code
-  insertGroup(name)
-  updateGroup(name, id)
-  deleteGroup(id)
-  showGroup()
-*/
-
-/*
-  insertGroup("Arctic Fox")
-  updateGroup("Arctic Fox", 3)
-  deleteGroup(3)
-  showGroup()
-*/

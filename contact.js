@@ -1,6 +1,5 @@
 "use strict"
 
-const repl = require('repl');
 const sqlite3 = require('sqlite3').verbose();
 
 let file = "address_book.db"
@@ -8,7 +7,7 @@ let db = new sqlite3.Database(file);
 let emailPatt = /\S+@\S+\.\S+/
 let phonePatt = /[0-9]{9,13}/
 
-class Contact {
+export class Contacts {
   static insertContact (name, company, phone, email) {
     if(!emailPatt.test(email)){
       return console.log("Email not valid!")
@@ -26,19 +25,6 @@ class Contact {
         })
       })
     }
-  }
-
-  static insertContactIdToGroupId (contactid, groupid) {
-    let INSERT_CONTACT_TO_GROUP = ``
-    db.serialize(function() {
-      db.run(INSERT_CONTACT_TO_GROUP, function(err) {
-        if(err) {
-          console.log(err)
-        } else {
-          console.log(`Insert Contact to Group Id Success!`)
-        }
-      })
-    })
   }
 
   static updateContact (name, company, telp, email, id) {
@@ -83,27 +69,6 @@ class Contact {
   }
 }
 
-let command = repl.start("> ")
-
-command.context.insertContact = Contact.insertContact;
-command.context.insertContactIdToGroupId = Contact.insertContactIdToGroupId;
-command.context.updateContact = Contact.updateContact;
-command.context.deleteContact = Contact.deleteContact;
-command.context.showContact = Contact.showContact;
 
 
-/* Driver Code
-    insertContact(name, company, phone, email)
-    insertContactIdToGroupId(contactid, groupid)
-    updateContact(name, telp, company, email, id)
-    deleteContact(id)
-    showContact()
-*/
 
-/*
-    insertContact("Windiana Krismanuyar", "PT.Hacktiv8", "08194761875", "windi@gmail.com")
-    insertContactIdToGroupId(contactid, groupid)
-    updateContact("Windiana Krismanuyar", "PT.Hacktiv8", "08194761875", "windi@gmail.com", 4)
-    deleteContact(4)
-    showContact()
-*/
