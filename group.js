@@ -50,7 +50,7 @@ class Groups {
   }
 
   static showGroup () {
-    let show = `SELECT groups.*, contact.firstname, contact.lastname FROM groups, (select contact_id, firstname, lastname from contact_groups, contacts where contact_groups.contact_id = contacts.id) AS contact WHERE groups.id = group.contact_id`;
+    let show = `SELECT groups.*, contact_detail.firstname AS firstname, contact_detail.lastname AS lastname FROM groups, (SELECT contacts.firstname, contacts.lastname, contact_groups.group_id FROM contacts, contact_groups WHERE contact_groups.contact_id = contacts.id) AS contact_detail WHERE groups.id = contact_detail.group_id`;
     db.serialize(function () {
       db.each(show, function (err, row) {
         if (err) {
