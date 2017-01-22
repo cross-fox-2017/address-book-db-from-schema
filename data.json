@@ -1,0 +1,51 @@
+{
+    "Contacts": [{
+            "name": "Muhammad Iqbal",
+            "company_name": "Hacktiv8",
+            "phone": "085620088583",
+            "email": "iqbal.0809@gmail.com"
+        },
+        {
+            "name": "Rubi Henjaya",
+            "company_name": "Hacktiv8 Instructor",
+            "phone": "08591238312",
+            "email": "rubi@hacktiv8.com"
+        },
+        {
+            "name": "Windiana",
+            "company_name": "Hacktiv8 Instructor",
+            "phone": "08725815396",
+            "email": "windiana@hacktiv8.com"
+        },
+        {
+            "name": "Yoma Sofwan",
+            "company_name": "Hacktiv8 Instructor",
+            "phone": "082146127123",
+            "email": "yomaswn@gmail.com"
+        }
+    ],
+    "Groups": [{
+            "name": "Student"
+        },
+        {
+            "name": "Instructor"
+        }
+    ],
+    "Group_Contacts": [{
+            "contact_id": "1",
+            "group_id": "1"
+        },
+        {
+            "contact_id": "2",
+            "group_id": "2"
+        },
+        {
+            "contact_id": "3",
+            "group_id": "2"
+        },
+        {
+            "contact_id": "4",
+            "group_id": "1"
+        }
+    ]
+}
