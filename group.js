@@ -4,6 +4,7 @@ const sqlite3 = require("sqlite3").verbose();
 const file = "address_book.db";
 const db = new sqlite3.Database(file);
 const repl = require('repl')
+const contactGroup = require('./contact-group.js');
 
 // write your code here
 class Groups {
@@ -41,7 +42,7 @@ class Groups {
         if(err) {
           console.log(err);
         } else {
-          console.log('DELETE DATA');
+          contactGroup.deleteData(id)
         }
       })
     })

@@ -48,7 +48,7 @@ class Contacts {
   }
 
   static showData () {
-    let SHOW_DATA = `select contacts.*,groups.* from contacts left join groups on contacts.id=groups.id`;
+    let SHOW_DATA = `select contacts.*, groups.name as groupName from contacts left join group_contacts on contacts.id=group_contacts.contact_id left join groups on group_contacts.group_id=groups.id`;
     db.serialize(function() {
       db.each(SHOW_DATA, function(err,row) {
         if(err) {

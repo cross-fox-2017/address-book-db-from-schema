@@ -35,7 +35,7 @@ class Group_Contacts {
   }
 
   static deleteData (id) {
-    let DELETE_DATA = `DELETE FROM group_contacts WHERE id='${id}'`;
+    let DELETE_DATA = `FROM group_contacts WHERE id='${id}'`;
     db.serialize(function() {
       db.run(DELETE_DATA, function(err) {
         if(err) {
