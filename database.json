@@ -1,0 +1,52 @@
+{"contacts" :
+  [{
+  "firstname"   : "Raditya",
+  "lastname"    : "Pradipta",
+  "company"     : "HACKTIV8",
+  "phone"       : "0123123123",
+  "email"       : "raditya@hacktiv8.com",
+  "created_at"  : "2015-01-23"
+  },
+  {
+    "firstname"   : "John",
+    "lastname"    : "Doe",
+    "company"     : "HACKTIV9",
+    "phone"       : "0234234234",
+    "email"       : "john@hacktiv9.com",
+    "created_at"  : "2015-02-23"
+  },
+  {
+    "firstname"   : "Jane",
+    "lastname"    : "Smith",
+    "company"     : "HACKTIV10",
+    "phone"       : "0345345345",
+    "email"       : "jane@hacktiv10.com",
+    "created_at"  : "2015-03-23"
+  },
+  {
+    "firstname"   : "Louis",
+    "lastname"    : "Richardson",
+    "company"     : "HACKTIV11",
+    "phone"       : "0456456456",
+    "email"       : "louis@hacktiv11.com",
+    "created_at"  : "2015-04-23"
+  },
+  {
+    "firstname"   : "Rob",
+    "lastname"    : "Stark",
+    "company"     : "HACKTIV12",
+    "phone"       : "0567567567",
+    "email"       : "raditya@hacktiv12.com",
+    "created_at"  : "2015-01-23"
+    }],
+
+  "groups":
+  [{
+    "name"       : "cross-doge",
+    "created_at" : "2015-02-15"
+  },
+  {
+    "name"       : "artctic-doge",
+    "created_at" : "2015-03-05"
+  }]
+}    
