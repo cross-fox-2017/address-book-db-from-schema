@@ -6,7 +6,7 @@ let file = "address_book.db";
 let db = new sqlite3.Database(file);
 
 // write your code here
-class Contacts {
+export class Contacts {
   static insertContact (firstname, lastname, company, phone, email) {
     let regexPhone = /^\d{10,13}$/;
     let regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -94,10 +94,10 @@ class Contacts {
   }
 }
 
-let replCommand = repl.start("> ");
-replCommand.context.insertContact = Contacts.insertContact;
-replCommand.context.updateContact = Contacts.updateContact;
-replCommand.context.deleteContact = Contacts.deleteContact;
-replCommand.context.showContact = Contacts.showContact;
-replCommand.context.show = Contacts.show;
-replCommand.context.help = Contacts.help;
+// let replCommand = repl.start("> ");
+// replCommand.context.insertContact = Contacts.insertContact;
+// replCommand.context.updateContact = Contacts.updateContact;
+// replCommand.context.deleteContact = Contacts.deleteContact;
+// replCommand.context.showContact = Contacts.showContact;
+// replCommand.context.show = Contacts.show;
+// replCommand.context.help = Contacts.help;

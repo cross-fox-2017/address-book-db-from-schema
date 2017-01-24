@@ -6,7 +6,7 @@ let file = "address_book.db";
 let db = new sqlite3.Database(file);
 
 // write your code here
-class Groups {
+export class Groups {
   static insertGroup (name) {
     let add = `INSERT INTO groups (name) VALUES ('${name}');`;
     db.serialize(function () {
@@ -69,9 +69,9 @@ class Groups {
   }
 }
 
-let replCommand = repl.start("> ");
-replCommand.context.insertGroup = Groups.insertGroup;
-replCommand.context.updateGroup = Groups.updateGroup;
-replCommand.context.deleteGroup = Groups.deleteGroup;
-replCommand.context.showGroup = Groups.showGroup;
-replCommand.context.help = Groups.help;
+// let replCommand = repl.start("> ");
+// replCommand.context.insertGroup = Groups.insertGroup;
+// replCommand.context.updateGroup = Groups.updateGroup;
+// replCommand.context.deleteGroup = Groups.deleteGroup;
+// replCommand.context.showGroup = Groups.showGroup;
+// replCommand.context.help = Groups.help;
